@@ -40,11 +40,10 @@ def get_music_info(music_path) -> list[Song]:
 
     return songs
 
-def temp_main():
-    music_path = get_music_location()
-    check_music(music_path)
-    songs = get_music_info(music_path)
-    for x in songs:
-        print(x.title)
+# def temp_main():
+#     music_path = get_music_location()
+#     check_music(music_path)
+#     songs = get_music_info(music_path)
+    
 
-temp_main()
+# temp_main()
