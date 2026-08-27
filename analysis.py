@@ -18,7 +18,7 @@ def show_chart(df):
 
     labels = [f"{artist} — {count}" for artist, count in artist_counts.items()]
 
-    artist_counts.plot.pie(autopct='%1.1f%%')
+    artist_counts.plot.pie(autopct='%1.1f%%', title="Top Artists by Track Count")
 
     plt.ylabel("")
     plt.legend(labels, title="Artist — Tracks", loc="center left", bbox_to_anchor=(-0.5, 0.5))
