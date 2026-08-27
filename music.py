@@ -2,6 +2,13 @@
 import os
 from tinytag import TinyTag
 
+class Song:
+    def __init__(self, tag: TinyTag):
+        self.title = tag.title
+        self.artist = tag.artist
+        self.album = tag.album
+        self.duration = tag.duration
+
 def get_music_location() -> str:
     # Ask the user for a path to the music and return it
     music_path: str = input("Please enter the location of your music library / playlist: ")
@@ -18,18 +25,26 @@ def check_music(music_path):
             print("Please ensure this directory only contains supported file types")
             exit("musicTypeError")
 
-def get_music_info(music_path):
+def get_music_info(music_path) -> list[Song]:
+    # Prepare array to be populated with songs
+    songs = []
+
     # Loop through songs, combining paths for TinyTag
     for file in os.listdir(music_path):
         full_path = os.path.join(music_path, file)
 
-        # List the Artists of each track in the music_path
+        # Convert to Song class, and append to songs array
         tag: TinyTag = TinyTag.get(full_path)
-        print(f"{tag.artist}")
+        song = Song(tag)
+        songs.append(song)
+
+    return songs
 
 def temp_main():
     music_path = get_music_location()
     check_music(music_path)
-    get_music_info(music_path)
+    songs = get_music_info(music_path)
+    for x in songs:
+        print(x.title)
 
 temp_main()
