@@ -39,11 +39,3 @@ def get_music_info(music_path) -> list[Song]:
         songs.append(song)
 
     return songs
-
-# def temp_main():
-#     music_path = get_music_location()
-#     check_music(music_path)
-#     songs = get_music_info(music_path)
-    
-
-# temp_main()
